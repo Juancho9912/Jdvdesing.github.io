@@ -1,0 +1,646 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,700&display=swap');
+
+
+:root{
+    --padding-container: 100px 0;
+    --color-title: #001A49;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+.container{
+    width: 90%; /* No queremos que el contenedor ocupe el 100% de la pagina */
+    max-width: 1200px; /* Pero que tenga un ancho maximo de 1200 px */
+    margin: 0 auto; /* Que se centre verticalmente con un margin auto hacia los lados */
+    overflow: hidden; /* Que todo lo que salga de ese elemento se esconda */
+    padding: var(--padding-container); /* Esto hace que se tenga un padding arriba y abajo de 100 px y a los lados de 0 */
+    
+}
+
+
+.hero{
+    width: 100%; /*Lo ponemos de 100% para poner la imagen de fondo*/
+    height: 100vh; /* Lo ponemos de 100vh para que ocupe toda la pantalla */
+    min-height: 600px; /* Pero que tenga un alto minimo de 600 px */
+    max-height: 800px; /* Pero que tenga un alto minimo de 800 px */
+    position: relative; /* Para poder posicionar los elementos absolutamente dentro de este contenedor */
+    display: grid; /* Para crear dos filas */
+    grid-template-rows: 100px 1fr; /*La primera fila de 100px y la segunda que tome el contenido sobrande despues de los 100 px*/ 
+    color: #fff;
+}
+
+.hero::before{ /* Esto es un pseudo elemento que se pone antes del elemento padre que seria hero la clase de arriba */
+    content: '';
+    position: absolute; /* Para que se posicione absolutamente a su padre que es hero */
+    top: 0; /* Para que se posicione en la parte superior */
+    left: 0; /* Para que se posicione en la parte izquierda */
+    width: 100%; /* Para que ocupe todo el ancho */
+    height: 100%; /* Para que ocupe todo el alto */
+    background-image: linear-gradient(180deg, #0000008c 0%, #0000008c 100%), url('../images/computer.jpg');
+    background-size: cover; /* Para que la imagen se ajuste al tamaño del contenedor y se adapte a la pagina*/
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 95%, 0 80%); /* Para que se cree un triangulo en la parte inferior derecha */
+    z-index: -1; /*Para poner la imagen atras de el texto */
+} /* Para poder poner una imagen de fondo */
+
+.nav{
+    --padding-container:0;
+    height: 100%; /* Para que ocupe todo el alto */
+    display: flex; /* Poner los elementos uno al lado de el otro */
+    align-items: center; /* Para centrar verticalmente  */
+}
+
+.nav_title{
+    font-weight: 300; /* Para que tenga un grosor de 300 */
+}
+
+.nav_items{
+    list-style: none; /* Para quitar los puntos de la lista */
+}
+
+.nav_link{
+    margin-left: auto; /* Para que se ponga al final de la lista */
+    padding: 0; 
+    display:grid; /* Para crear una fila */
+    grid-auto-flow: column; /* Para que se pongan uno al lado de el otro */
+    grid-auto-columns: max-content; /* Para que el ancho de la columna sea el ancho del contenido */
+    gap: 2em;
+}
+
+.nav_links{
+    color: #fff;
+    text-decoration: none; /* Para quitar el subrayado */
+}
+
+.nav_menu{
+    margin-left: auto; /* Para que se ponga al final de la lista */
+    cursor: pointer; 
+    display: none; /* Para que no se muestre en la version de escritorio */
+}
+
+.nav_close{
+    display: var(--show, none); 
+}
+.nav_img{
+    display: block;
+    width: 30px;
+}
+
+.hero_container{
+    max-width: 800px; /* Para que el texto no ocupe todo el ancho */
+    display: grid; /* Para crear dos filas */
+    --padding-container: 0; /* Para quitar el padding del contenedor */
+    grid-auto-rows: max-content; /* Para que el alto de la fila sea el alto del contenido */
+    align-content: center; /* Para centrar verticalmente */
+    gap: 1em; /* Para que haya un espacio de 1em entre los elementos */ 
+    padding-bottom: 100px; /* Para que haya un espacio de 100px entre el texto y el triangulo */
+    text-align:center; /* Para centrar el texto */
+}
+
+.hero_title{
+    font-size:3rem;
+}
+.hero_paragraph{
+    margin-bottom: 20px;
+}
+
+.cta{
+    display: inline-block;
+    background-color: #2091F9;
+    justify-self: center; /* Hace que el boton y el color azul ocupen solo el real contenido por que si no ocupa toda la pag a lo largo */
+    color: #fff;
+    text-decoration: none;
+    padding: 13px 30px;
+    border-radius: 32px; /* Para que los bordes sean redondeados */
+}
+
+.about{
+    text-align: center;
+}
+
+.subtitle{
+    font-size: 2rem; 
+    color: var(--color-title);
+    margin-bottom: 25px;
+}
+
+.about_paragraph{
+    line-height: 1.7; /* Para que haya un espacio de 1.7 entre las lineas */
+}
+
+.about_main{
+    padding-top: 80px; /* Para que haya un espacio de 80px entre el titulo y el texto */
+    display: grid; /* Para crear dos filas */
+    width: 90%; /* Para que el texto no ocupe todo el ancho */
+    margin: 0 auto; /* Para que se centre verticalmente */
+    gap: 1em; /* Para que haya un espacio de 1em entre los elementos */
+    overflow: hidden; /* Para que todo lo que salga de ese elemento se esconda */
+    grid-template-columns: repeat(auto-fit, minmax(260px,auto)) /* Para que se repita el numero de columnas que queramos */
+}
+
+.about_icons{
+    display:grid;
+    gap: 1em;
+    justify-items:center;
+    width: 260px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+
+
+.about_icon{
+    width: 40px;
+}
+
+.knowledge{
+    background-color: #e5e5f7;
+    background-image:  radial-gradient(#444cf7 0.5px, transparent 0.5px), radial-gradient(#444cf7 0.5px, #e5e5f7 0.5px);
+    background-size: 20px 20px;
+    background-position: 0 0,10px 10px;
+    overflow:hidden;
+}
+
+.knowledge_container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em;
+    align-items:center;
+}
+
+.knowledge_picture{
+    max-width:500px; /* Organizamos el contenedor de la imagen */
+}
+
+.knowledge_paragraph{
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+.knowledge_img{
+    width:100%; /* que la imagen sea de el 100% de el contenedor padre de arriba */
+    display: block; /* Evitamos problemas con espacios verticales*/
+}
+
+.price{
+    text-align:center;
+    
+}
+
+.price_table{
+    padding-top: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5em;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.price_element{
+    background-color: #e5e5f7;
+    text-align: center;
+    border-radius: 10px;
+    width: 330px;
+    padding: 40px;
+    --color-plan: #696871;
+    --color-price: #1D293F;
+    --bg-cta: #fff;
+    --color-cta: #5454d4;
+    --color-items: #696871;
+}
+
+.price_element--best{
+    width: 370px;
+    padding: 60px 40px;
+    background-color: #FF7143;
+    --color-plan: rgb(255 255 255 / 75%);
+    --color-price: #fff;
+    --bg-cta: #9F3919;
+    --color-cta: #fff;
+    --color-items: #fff;
+}
+
+.price_name{
+    color: var(--color-plan);
+    margin-bottom: 15px;
+    font-weight: 300;
+}
+
+.price_price{
+    font-size: 2.5rem;
+    color: var(--color-price);
+}
+
+.price_items{
+    margin-top:35px;
+    display: grid;
+    gap: 1em;
+    font-weight:300;
+    font-size: 1.2rem;
+    margin-bottom: 50px;
+    color: var(--color-items);
+}
+
+.price_cta{
+    background-color: var(--bg-cta);
+    display:block;
+    padding: 20px 0;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 0 1px rgba(0,0,0,.5);
+    color: var(--color-cta);
+}
+
+
+/* Testimony */
+
+.testimony{
+    background-color: #e5e5f7;
+}
+
+.testimony_container{
+    display: grid;
+    grid-template-columns: 50px 1fr 50px;
+    gap: 1em;
+    align-items:center;
+}
+
+.testimony_body{
+    display:grid;
+    grid-template-columns: 1fr max-content;
+    justify-content: space-between;
+    align-items: center;
+    gap:2em;
+    grid-column: 2/3;
+    grid-row: 1/2;
+    opacity:0;
+    pointer-events:none;
+}
+
+.testimony_body--show{
+    pointer-events:unset;
+    opacity:1;
+    transition:opacity 1.5s ease-in-out;
+}
+
+.testimony_img{
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover; /*Para acomodar el objeto de la imagen*/
+    object-position: 50% 30%; /*Posicionarla de una mejor manera */
+}
+
+.testimony_course{
+    background-color: royalblue;
+    color:#fff;
+    display:inline-block;
+    padding:5px;
+
+}
+
+.testimony_texts{
+    max-width:700px;
+}
+
+.testimony_arrow{
+    width:90%;
+    cursor:pointer;
+}
+.questions{
+    text-align:center;
+}
+
+.questions_container{
+    display: grid;
+    padding-top: 50px;
+    gap: 2em;
+    padding-bottom: 100px;
+}
+
+.questions_padding{
+    padding: 0;
+    transition: padding .3s;
+    border: 1px solid #5454d4;
+    border-radius: 6px;
+}
+
+.questions_padding-add{
+    padding-bottom: 30px;
+}
+
+.questions_answer{
+    padding: 0 30px 0;
+    overflow: hidden;
+
+}
+
+.questions_arrow{
+    border-radius: 50%;
+    background-color: var(--color-title);
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-end;
+    margin-left: 10px;
+    transition: transform .3s;
+}
+
+.questions_arrow-rotate{
+    transform: rotate(180deg);
+}
+
+.questions_title{
+    text-align: left;
+    display: flex;
+    padding: 30px 0 30px;
+    cursor: pointer;
+    color: var(--color-title);
+    justify-content: space-between;
+    font-size: 20px;
+}
+
+.questions_show{
+    text-align: left;
+    height: 0;
+    transition: height .3s;
+}
+
+.questions_img{
+    display: block;
+}
+
+.questions_copy{
+    width: 60%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
+.footer{
+    background-color: #1D293F;
+}
+
+.footer_title{
+    font-weight: 300;
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.footer_title, .footer_newsletter{
+    color: #fff;
+}
+
+.footer_container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 60px;
+}
+
+.nav-footer{
+    padding-bottom: 20px;
+    display: grid;
+    gap: 1em;
+    grid-auto-flow: row;
+    height: 100%;
+}
+
+.nav_link-footer{
+    display: flex; /*Para que se acomoden en una sola linea*/
+    margin:0; /*Para que no tenga margen*/
+    margin-right: 20px; /*Para que no se peguen al borde*/
+    flex-wrap: wrap; /*Para que se ajuste a la pantalla*/
+}
+
+.footer_inputs{
+    margin-top: 10px; 
+    display: flex; /* Poner los elementos uno al lado de el otro // Para que se acomoden en una sola linea */
+    overflow: hidden; /*Para que no se salga el input*/
+}
+
+.footer_input{
+    background-color: #fff;
+    height: 50px;
+    display: block;
+    padding-left: 10px;
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+    border: none;
+    margin-right: 16px;
+}
+
+.footer_submit{
+    margin-left: auto;
+    display: inline-block;
+    height: 50px;
+    padding: 0 20px;
+    background-color: #2091F9;
+    border: none;
+    font-style: 1rem;
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.footer_copy{
+    --padding-container: 30px 0;
+    text-align: center;
+    color: #fff;
+}
+
+.footer_copyright{
+    font-weight: 300;
+}
+
+.footer_icons{
+    margin-bottom: 10px;
+}
+
+.footer_img{
+    width: 30px;
+}
+
+/*                MEDIA QUERIES                   */
+
+@media (max-width:800px) {
+    .nav_menu{
+        display: block;
+    }
+    .nav_link-menu{
+        position: fixed;
+        background-color: #000;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        z-index: 100;
+        opacity: 0;
+        pointer-events: none;
+        transition: .7s opacity;
+    }
+    .nav_link-show{
+        --show: block;
+        opacity: 1;
+        pointer-events: unset;
+    }
+
+    .nav_close{
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        width: 30px;
+        cursor: pointer;
+    } 
+
+    .hero_title{
+        font-size: 2.5rem;
+    }
+
+    .about_main{
+        gap: 2em;
+    }
+
+    .about__icons:last-of-type{
+        grid-column: 1/-1;
+    }
+
+    .knowledge_container{
+        grid-template-columns: 1fr;
+        grid-template-rows: max-content 1fr;
+        gap: 3em;
+        text-align: center;
+    }
+
+    /* .knowledge_picture{
+        grid-row: 1/2;
+        justify-self: center;
+    } */ 
+    /*De esta forma no me funciono me toco utilizar clase en 
+    text y cambiar la posicion de grid en text*/
+
+    .knowledge_texts{
+        grid-row: 2/3;
+    }
+
+    .testimony_container{
+        grid-template-columns: 30px 1fr 30px; /*Para hacer mas pequeñas las flechas*/
+    }
+
+    .testimony_body{
+        grid-template-columns: 1fr; /*Para que se acomoden en una sola columna*/
+        grid-template-rows: max-content max-content; /*Para que tenga 2 filas*/
+        gap: 3em;
+        justify-items: center;
+    }
+
+    .testimony_img{
+        width: 200px;
+        height: 200px;
+    }
+
+    .questions_copy{
+        width: 100%;
+    }
+
+    .footer_container{
+        flex-wrap: wrap; /*Si en algun momento los elementos ya no entran en la misma
+        Linea entonces que se desborden a otra linea*/
+        gap: 2em;
+    }
+    .nav-footer{
+        width: 100%;
+        justify-items: center;
+    }
+    .nav_link-footer{
+        width: 100%;
+        justify-content: space-evenly; /*Que se reparta su espacio disponible equitativamente*/
+        margin: 0; /*Para que no tenga margen*/
+    }
+
+    .footer_form{
+        width: 100%;
+        justify-content: space-evenly;
+    }
+    .footer_input{
+        flex: 1;
+    }
+
+}
+
+@media(max-width: 600px){
+    .hero_title{
+        font-size: 2rem;
+    }
+    .hero_paragraph{
+        font-size: 1rem;
+    }
+
+    .subtitle{
+        font-size: 1.8rem;
+    }
+    .price_element{
+        width: 90%; /*Antes teniamos width fijo ahora le damos uno de 90%*/
+    }
+    .price_element--best{
+        width: 90%;
+    }
+
+    .testimony{
+        --padding-container: 60px 0;
+    }
+
+    .testimony_container{
+        grid-template-columns: 28px 1fr 28px; /* Creamos 3 columnas*/
+        gap: .9em; /*Espacio entre columnas*/
+    }
+
+    .testimony_arrow{
+        width:100%;
+    }
+    .testimony_course{
+        margin-top: 15px;
+    }
+    
+    .questions_title{
+        font-size: 1rem;
+    }
+
+    .nav-footer{
+        padding-bottom: 60px;
+    }
+
+    .footer_title{
+        justify-self: start; /* Para que lo mande al principio*/
+        margin: 15px;
+    }
+
+    .footer_inputs{
+        flex-wrap: wrap;
+    }
+    .footer_input{
+        flex-basis: 100%; /*Para que se acomoden en una sola linea*/
+        margin: 0;
+        margin-bottom: 16px;
+    }
+    .footer_submit{
+        margin-right: auto;
+        margin-left: 0;
+    }
+
+    .nav_link-footer{
+        justify-content: space-between; /*Para que se peguen en las esquinas */
+    }
+
+    
+    
+}
